@@ -8,7 +8,7 @@ export default Ember.ArrayController.extend({
         title: newTitle,
         isCompleted: false
       });
-
+ 
       // Clear the "New Todo" text field
       this.set('newTitle', '');
 

@@ -1,57 +1,7 @@
 {{input type="text" id="new-todo" placeholder="What needs to be done?" value=newTitle action="createTodo"}}
 
 <ul id="todo-list">
-  {{#each}}
-    <li>
-      <input type="checkbox" class="toggle">
-      <label>{{title}}</label>
-      <button class="destroy"></button>
-    </li>
-  {{/each}}
 
-  <ul id="todo-list">
-    {{#each}}
-      <li {{bind-attr class="isCompleted:completed"}}>
-        <input type="checkbox" class="toggle">
-        <label>{{title}}</label>
-        <button class="destroy"></button>
-      </li>
-    {{/each}}
-  </ul>
-
-  {{#each}}
-    <li {{bind-attr class="isCompleted:completed"}}>
-      {{input type="checkbox" checked=isCompleted class="toggle"}}
-      <label>{{title}}</label>
-      <button class="destroy"></button>
-    </li>
-  {{/each}}
-
-  {{#each}}
-    <li {{bind-attr class="isCompleted:completed isEditing:editing"}}>
-      {{#if isEditing}}
-        <input class="edit">
-      {{else}}
-        {{input type="checkbox" checked=isCompleted class="toggle"}}
-        <label {{action "editTodo" on="doubleClick"}}>{{title}}</label>
-        <button class="destroy"></button>
-      {{/if}}
-    </li>
-  {{/each}}
-
-</ul>
-
-{{#each itemController="todo" }}
-  <li {{bind-attr class="isCompleted:completed isEditing:editing"}}>
-    {{#if isEditing}}
-      {{input type="text" class="edit" value=title focus-out="acceptChanges" insert-newline="acceptChanges"}}
-    {{else}}
-      {{input type="checkbox" checked=isCompleted class="toggle"}}
-      <label {{action "editTodo" on="doubleClick"}}>{{title}}</label>
-      <button class="destroy"></button>
-    {{/if}}
-  </li>
-{{/each}}
 
 {{#each itemController="todo" }}
   <li {{bind-attr class="isCompleted:completed isEditing:editing"}}>
@@ -64,6 +14,7 @@
     {{/if}}
   </li>
 {{/each}}
+</ul>
 
 <section id="main">
   <ul id="todo-list">
@@ -108,10 +59,6 @@
     </button>
 </footer>
 
-  <button id="clear-completed">
-    Clear completed (1)
-  </button>
-</footer>
 
 <section id="main">
     {{outlet}}
